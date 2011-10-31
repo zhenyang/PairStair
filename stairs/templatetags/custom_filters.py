@@ -9,4 +9,4 @@ def count_pair_with(first_programmer, second_programmer):
 
 @register.filter
 def url_pair_with(first_programmer, second_programmer):
-    return 'add_pair/' + str(first_programmer.id) + '/' + str(second_programmer.id)
+    return '/add_pair/' + str(first_programmer.id) + '/' + str(second_programmer.id)

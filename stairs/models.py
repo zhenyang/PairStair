@@ -14,7 +14,6 @@ class Programmer(models.Model):
             Pairing(programmerOne=programmer_paired_with, programmerTwo=self).save()
 
 
-
 class Pairing(models.Model):
     programmerOne = models.ForeignKey(Programmer, related_name='one')
     programmerTwo = models.ForeignKey(Programmer, related_name='two')
