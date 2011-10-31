@@ -102,7 +102,9 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'Pair.urls'
 
-TEMPLATE_DIRS = ('/Users/twer/Documents/Practice_Coding/Django/Pair/templates',)
+TEMPLATE_DIRS = (
+    '/Users/twer/Documents/Practice_Coding/Django/Pair/templates',
+    )
 
 INSTALLED_APPS = (
     'django.contrib.auth',
