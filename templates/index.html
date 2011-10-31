@@ -1,0 +1,36 @@
+{% load custom_filters %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+</head>     
+<body>
+<table border="1">
+    <thead>
+    <tr><th></th>
+    {% for programmer in programmers %}
+        <th>
+            {{ programmer.name }}
+        </th>
+    {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for first_programmer in programmers %}
+    <tr><td style="font-weight: bold;">
+            {{ first_programmer.name }}
+    </td>
+        {% for second_programmer in programmers %}
+        <td>
+            {% if first_programmer.name > second_programmer.name %}
+            <a href="{{ first_programmer|url_pair_with:second_programmer }}">{{ first_programmer|count_pair_with:second_programmer }}</a>
+            {% endif %}
+        </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

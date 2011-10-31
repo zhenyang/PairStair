@@ -12,7 +12,8 @@ class Programmer(models.Model):
             Pairing(programmerOne=self, programmerTwo=programmer_paired_with).save()
         else:
             Pairing(programmerOne=programmer_paired_with, programmerTwo=self).save()
-            
+
+
 
 class Pairing(models.Model):
     programmerOne = models.ForeignKey(Programmer, related_name='one')
