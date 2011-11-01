@@ -17,3 +17,7 @@ def add_pair(request, firstProgrammer_id, secondProgrammer_id):
     second_programmer=Programmer.objects.get(id=secondProgrammer_id)
     first_programmer.add_pairing_with(second_programmer)
     return redirect('/index')
+
+
+def add_programmer(request):
+    pass
