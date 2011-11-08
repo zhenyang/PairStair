@@ -5,10 +5,12 @@
     <title>Add A Programmer</title>
 </head>
 <body>
+<h3>Add A Programmer</h3>
 <form method="POST">
     {% csrf_token %}
+    <div>input a name</div>
     <textarea class="programmer_name" name="programmer_name"></textarea>
-    <input class="add_programmer" type='submit'/>
+    <input class="add_programmer"  type='submit'/>
 </form>
 
 </body>
