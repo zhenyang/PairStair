@@ -5,7 +5,8 @@ class Programmer(models.Model):
     name = models.TextField()
 
     def get_count_paired_with(self, programmer_paired_with):
-        return Pairing.objects.filter(programmerOne=self, programmerTwo=programmer_paired_with).count()
+        return Pairing.objects.filter(programmerOne=self, programmerTwo=programmer_paired_with).count()\
+        + Pairing.objects.filter(programmerOne=programmer_paired_with, programmerTwo=self).count()
 
     def add_pairing_with(self, programmer_paired_with):
         if self.id < programmer_paired_with.id:

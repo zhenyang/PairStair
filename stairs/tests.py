@@ -6,6 +6,7 @@ Replace this with more appropriate tests for your application.
 """
 
 from django.test import TestCase
+from django.test.client import Client
 from stairs.models import Programmer, Pairing
 
 
@@ -33,6 +34,15 @@ class ModelTest(TestCase):
         self.jason.add_pairing_with(self.yz)
         self.assertEqual(self.yz.get_count_paired_with(self.jason), 3)
 
+class TestViews(TestCase):
+    def test_should_render_page_to_add_programmer(self):
+        response=Client().get('/add_programmer/')
 
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'add_programmer.html')
 
+    def test_should_add_a_programmer(self):
+        Client().post('/add_programmer/',{'programmer_name': 'Happy'})
+
+        self.assertIsNotNone(Programmer.objects.get(name='Happy'))
         
