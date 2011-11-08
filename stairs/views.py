@@ -1,7 +1,7 @@
 # Create your views here.
 from django.shortcuts import redirect, render_to_response
 from django.template.context import  RequestContext
-from stairs.models import Programmer
+from stairs.models import Programmer, Pairing
 
 def index(request):
     programmers = Programmer.objects.all().order_by('name')
@@ -19,3 +19,10 @@ def add_programmer(request):
         Programmer(name=name).save()
         return redirect('/index')
     return render_to_response('add_programmer.html', RequestContext(request))
+
+
+def clear_stair(request):
+    Pairing.objects.all().delete()
+    Programmer.objects.all().delete()
+
+    return redirect('/index')

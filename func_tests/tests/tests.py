@@ -36,7 +36,18 @@ class TestCase(unittest.TestCase):
         submit_button.click()
 
         self.assertEqual(self.driver.title, "Pair Stair")
+        table_body = self.driver.find_element_by_css_selector("tbody")
+        self.assertIn('Good',table_body.text)
 
+    def test_clear_stair(self):
+        self.driver.get("http://127.0.0.1:8000/index")
+        clear_stair_button = self.driver.find_element_by_css_selector("a.clear_stair")
+        self.assertIsNotNone(clear_stair_button)
+
+        clear_stair_button.click()
+
+        table_body = self.driver.find_element_by_css_selector("tbody")
+        self.assertEqual(table_body.text,'')
 
 if __name__ == '__main__':
     unittest.main()
